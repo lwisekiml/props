@@ -1,14 +1,17 @@
 <template>
   <div class="blue lighten-3 pa-3">
     <h1>User 컴포넌트</h1>
-    <p>이름: {{name}}</p>
-    <v-btn @click="changeName()">이름변경</v-btn>
+    <p>이름: 뷰제이에스</p>
     <hr>
     <v-layout row wrap>
       <v-flex xs12 sm6>
-        <UserDetail></UserDetail>
-        <UserDetail :nameOfChild="name"></UserDetail>
-<!--        <UserDetail :nameOfChild="{name: 'Hoo', familyName: 'Cho'}"></UserDetail>-->
+        <UserDetail
+          :name="name"
+          :address="address"
+          :phone="phone"
+          :hasDog="hasDog"
+        >
+        </UserDetail>
       </v-flex>
       <v-flex xs12 sm6>
         <UserEdit></UserEdit>
@@ -28,13 +31,11 @@ export default {
   },
   data () {
     return {
-      name: "뷰제이에스"
+      name: 'Hoza',
+      address: 'Seoul',
+      phone: '1234-5678',
+      hasDog: true,
     }
-  },
-  methods: {
-    changeName () {
-      this.name = "Hoza"
-      }
   }
 }
 </script>
