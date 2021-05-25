@@ -14,7 +14,13 @@
         </UserDetail>
       </v-flex>
       <v-flex xs12 sm6>
-        <UserEdit></UserEdit>
+        <UserEdit
+          :name="name"
+          :address="address"
+          :phone="phone"
+          :hasDog="hasDog"
+          @child="parents"
+        ></UserEdit>
       </v-flex>
     </v-layout>
   </div>
@@ -35,6 +41,16 @@ export default {
       address: 'Seoul',
       phone: '1234-5678',
       hasDog: true,
+    }
+  },
+  methods : {
+    parents(user) {
+      // user = {name, address, phone, hasDog}
+      this.name = user.name
+      this.address = user.address
+      this.phone = user.phone
+      this.hasDog = user.hasDog
+      console.log("부모가 받았어!")
     }
   }
 }
