@@ -29,14 +29,16 @@
 </template>
 
 <script>
-  export default {
+import { eventBus} from "../main";
+
+export default {
     props: ["name", "address", "phone", "hasDog"],
     data() {
       return {
-        user: {}
+        user: {} // user 오브젝트 생성
       }
     },
-    created() {
+    created() { // user 오브젝트에 값 저장
       this.user.name=this.name
       this.user.address=this.address
       this.user.phone=this.phone
@@ -44,8 +46,9 @@
     },
     methods: {
       changUser() {
-        console.log(this.user)
         this.$emit("child", this.user) // User.vue에 @child
+        eventBus.$emit("userWasEdited", new Date()) // eventBus(부모)에 신호르 보내면 UserDetail.vue에 있는 eventBus.$on이 받는다.
+        // $emit는 자식이 부모에게 신호를 보내는 것
       }
     }
   }
