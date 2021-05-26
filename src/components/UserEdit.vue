@@ -47,8 +47,9 @@ export default {
     methods: {
       changUser() {
         this.$emit("child", this.user) // User.vue에 @child
-        eventBus.$emit("userWasEdited", new Date()) // eventBus(부모)에 신호르 보내면 UserDetail.vue에 있는 eventBus.$on이 받는다.
+        // eventBus.$emit("userWasEdited", new Date()) // eventBus(부모)에 신호르 보내면 UserDetail.vue에 있는 eventBus.$on이 받는다.
         // $emit는 자식이 부모에게 신호를 보내는 것
+        eventBus.userWasEdited(new Date())
       }
     }
   }
