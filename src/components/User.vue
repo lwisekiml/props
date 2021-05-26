@@ -57,11 +57,15 @@ export default {
       this.hasDog = user.hasDog
       console.log("부모가 받았어!")
     },
-    getDateAndTime(date) {
-      let hour = date.getHours()
-      let minutes = date.getMinutes()
-      let fullDate = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
-      return `${fullDate} ${hour}:${minutes}`
+    getDateAndTime(date) { // editedDate가 null이므로 에러
+      if(date !== null) {
+        let hour = date.getHours()
+        let minutes = date.getMinutes()
+        let fullDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+        return `${fullDate} ${hour}:${minutes}`
+      } else {
+        return null
+      }
     }
   }
 }
