@@ -2,6 +2,7 @@
   <div class="blue lighten-3 pa-3">
     <h1>User 컴포넌트</h1>
     <p>이름: 뷰제이에스</p>
+    <p>{{ getDateAndTime(createAt) }}</p>
     <hr>
     <v-layout row wrap>
       <v-flex xs12 sm6>
@@ -41,7 +42,11 @@ export default {
       address: 'Seoul',
       phone: '1234-5678',
       hasDog: true,
+      createAt: null,
     }
+  },
+  created() {
+    this.createAt = new Date()
   },
   methods : {
     parents(user) {
@@ -51,6 +56,12 @@ export default {
       this.phone = user.phone
       this.hasDog = user.hasDog
       console.log("부모가 받았어!")
+    },
+    getDateAndTime(date) {
+      let hour = date.getHours()
+      let minutes = date.getMinutes()
+      let fullDate = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
+      return `${fullDate} ${hour}:${minutes}`
     }
   }
 }

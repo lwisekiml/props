@@ -30,7 +30,7 @@
       <v-list-tile>
         <v-list-tile-content>수정일자:</v-list-tile-content>
         <v-list-tile-content class="align-end">
-          {{editedDate}}
+          {{getDateAndTime(editedDate)}}
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
@@ -55,6 +55,18 @@ export default {
     eventBus.$on("userWasEdited", date => {
       this.editedDate = date
     })
+  },
+  methods: {
+    getDateAndTime(date) { // editedDate가 null이므로 에러
+      if(date !== null) {
+        let hour = date.getHours()
+        let minutes = date.getMinutes()
+        let fullDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+        return `${fullDate} ${hour}:${minutes}`
+      } else {
+        return null
+      }
+    }
   }
 }
 </script>
