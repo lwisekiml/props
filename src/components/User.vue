@@ -64,16 +64,17 @@ export default {
       this.hasDog = user.hasDog
       console.log("부모가 받았어!")
     },
-    // getDateAndTime(date) { // editedDate가 null이므로 에러
-    //   if(date !== null) {
-    //     let hour = date.getHours()
-    //     let minutes = date.getMinutes()
-    //     let fullDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
-    //     return `${fullDate} ${hour}:${minutes}`
-    //   } else {
-    //     return null
-    //   }
-    // }
+    getDateAndTime(date) { // editedDate가 null이므로 에러
+      if(date !== null) {
+        let hour = date.getHours()
+        let minutes = date.getMinutes()
+        let fullDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+        return `${hour}:${minutes} ${fullDate}`
+        // dateFormat.js 실행뒤 User.vue가 실행되어 이것이 출력된다.
+      } else {
+        return null
+      }
+    }
   },
   mixins: [dateFormat]
 }
